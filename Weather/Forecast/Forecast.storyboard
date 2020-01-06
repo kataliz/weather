@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WME-mF-4BE">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ForecastVC-->
+        <scene sceneID="2zd-dM-Xoz">
+            <objects>
+                <viewController storyboardIdentifier="ForecastVC" interfaceStyle="light" id="WME-mF-4BE" customClass="ForecastVC" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6kd-aD-4zw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1cA-gK-QGw" customClass="DaysWeatherView" customModule="Weather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="1cA-gK-QGw" firstAttribute="top" secondItem="QqD-8K-sLf" secondAttribute="top" id="4KR-76-XBk"/>
+                            <constraint firstAttribute="trailing" secondItem="1cA-gK-QGw" secondAttribute="trailing" id="81U-PU-tZ5"/>
+                            <constraint firstItem="1cA-gK-QGw" firstAttribute="leading" secondItem="6kd-aD-4zw" secondAttribute="leading" id="B8k-DX-ac6"/>
+                            <constraint firstAttribute="bottom" secondItem="1cA-gK-QGw" secondAttribute="bottom" id="KNv-u6-jLo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="QqD-8K-sLf"/>
+                    </view>
+                    <connections>
+                        <outlet property="daysWeatherView" destination="1cA-gK-QGw" id="c9p-IY-oU1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VmR-Tg-Ffv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-35" y="151"/>
+        </scene>
+    </scenes>
+</document>

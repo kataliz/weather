@@ -12,13 +12,15 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
     // MARK: Properties
     
+    private lazy var factory: RootFactory = RootFactory()
+
+    // MARK: UIApplicationDelegate
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//
-//        (window?.rootViewController as? ConverterViewController)?.viewModel = factory.converterViewModel
-//
+        window?.rootViewController = UIStoryboard(name: "Forecast", bundle: nil).viewController(ForecastVC.self)
         return true
     }
 }
