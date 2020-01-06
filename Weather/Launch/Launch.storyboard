@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="eA0-2B-0ew">
             <objects>
-                <viewController id="vWz-7j-3vQ" customClass="ViewController" customModule="Weather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vWz-7j-3vQ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Fh6-zX-y2q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

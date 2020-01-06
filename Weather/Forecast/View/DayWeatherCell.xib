@@ -29,26 +29,26 @@
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGe-z6-laL">
-                        <rect key="frame" x="312" y="30.5" width="30" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="sGe-z6-laL">
+                        <rect key="frame" x="302" y="30.5" width="40" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="1PI-ob-m1B"/>
+                            <constraint firstAttribute="width" constant="40" id="1PI-ob-m1B"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" name="secondTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyf-Vx-9k7">
-                        <rect key="frame" x="266" y="29" width="30" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Gyf-Vx-9k7">
+                        <rect key="frame" x="254" y="29" width="40" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="Q0x-9j-6pZ"/>
+                            <constraint firstAttribute="width" constant="40" id="Q0x-9j-6pZ"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" name="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mel-qQ-gvM">
-                        <rect key="frame" x="213.5" y="17.5" width="44" height="44"/>
+                        <rect key="frame" x="202" y="17.5" width="44" height="44"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="l5D-uo-nRL"/>
                             <constraint firstAttribute="height" constant="44" id="woG-da-idH"/>
@@ -71,10 +71,10 @@
                     <constraint firstItem="Mel-qQ-gvM" firstAttribute="centerY" secondItem="zgE-kc-Oi4" secondAttribute="centerY" id="Pdw-PD-Ps2"/>
                     <constraint firstAttribute="trailing" secondItem="6YL-a5-p5O" secondAttribute="trailing" id="Qm9-dp-rbs"/>
                     <constraint firstItem="6YL-a5-p5O" firstAttribute="top" secondItem="zgE-kc-Oi4" secondAttribute="top" id="baS-EL-kGh"/>
-                    <constraint firstItem="Gyf-Vx-9k7" firstAttribute="leading" secondItem="Mel-qQ-gvM" secondAttribute="trailing" constant="8.5" id="dpO-K2-sYj"/>
+                    <constraint firstItem="Gyf-Vx-9k7" firstAttribute="leading" secondItem="Mel-qQ-gvM" secondAttribute="trailing" constant="8" id="dpO-K2-sYj"/>
                     <constraint firstItem="sGe-z6-laL" firstAttribute="centerY" secondItem="zgE-kc-Oi4" secondAttribute="centerY" id="esZ-gO-Ikf"/>
                     <constraint firstAttribute="trailing" secondItem="sGe-z6-laL" secondAttribute="trailing" constant="16" id="esx-Us-WJE"/>
-                    <constraint firstItem="sGe-z6-laL" firstAttribute="leading" secondItem="Gyf-Vx-9k7" secondAttribute="trailing" constant="16" id="gkL-Ww-4Sw"/>
+                    <constraint firstItem="sGe-z6-laL" firstAttribute="leading" secondItem="Gyf-Vx-9k7" secondAttribute="trailing" constant="8" id="gkL-Ww-4Sw"/>
                     <constraint firstItem="EVd-KI-xaX" firstAttribute="top" secondItem="zgE-kc-Oi4" secondAttribute="top" constant="16" id="kZF-HQ-anT"/>
                     <constraint firstItem="EVd-KI-xaX" firstAttribute="leading" secondItem="zgE-kc-Oi4" secondAttribute="leading" constant="16" id="nfc-rN-JPF"/>
                     <constraint firstItem="Hfo-AM-ZCa" firstAttribute="leading" secondItem="zgE-kc-Oi4" secondAttribute="leading" constant="16" id="z8H-HY-LtU"/>
@@ -91,9 +91,9 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="divider" width="90" height="1"/>
+        <image name="divider" width="320" height="1"/>
         <namedColor name="listAccessoryColor">
-            <color red="0.0" green="0.023097826167941093" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.75074886658031081" green="0.74206590581825005" blue="0.7422619548077245" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

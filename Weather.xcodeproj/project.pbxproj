@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6E0488D079D0A3111926056B /* Pods_WeatherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EEC8ECBE5B7E6993A7618239 /* Pods_WeatherTests.framework */; };
 		85814C3623BF5FD900F605F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85814C3523BF5FD900F605F7 /* AppDelegate.swift */; };
-		85814C3A23BF5FD900F605F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85814C3923BF5FD900F605F7 /* ViewController.swift */; };
 		85814C3F23BF5FDA00F605F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85814C3E23BF5FDA00F605F7 /* Assets.xcassets */; };
 		85814C4D23BF5FDA00F605F7 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85814C4C23BF5FDA00F605F7 /* WeatherTests.swift */; };
 		8582C60123C12368008111BF /* DayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8582C60023C12368008111BF /* DayWeather.swift */; };
@@ -64,7 +63,6 @@
 		545CA2A69BC79E5A873DB5C0 /* Pods-Weather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weather.debug.xcconfig"; path = "Target Support Files/Pods-Weather/Pods-Weather.debug.xcconfig"; sourceTree = "<group>"; };
 		85814C3223BF5FD900F605F7 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85814C3523BF5FD900F605F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		85814C3923BF5FD900F605F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		85814C3E23BF5FDA00F605F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		85814C4323BF5FDA00F605F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		85814C4823BF5FDA00F605F7 /* WeatherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -169,7 +167,6 @@
 				85814C5823BF600B00F605F7 /* Launch */,
 				85C4D06E23BF6C8B00EC3EB6 /* Core */,
 				8597118D23BF66E000687A2B /* Sources */,
-				85814C3923BF5FD900F605F7 /* ViewController.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -602,7 +599,6 @@
 				8582C62123C24DE5008111BF /* WeatherCondition.swift in Sources */,
 				8582C62C23C26CF6008111BF /* DayWeatherInfo.swift in Sources */,
 				8582C62923C268C2008111BF /* DaysWeatherView.swift in Sources */,
-				85814C3A23BF5FD900F605F7 /* ViewController.swift in Sources */,
 				8582C61C23C24B46008111BF /* RxNetworkService.swift in Sources */,
 				8582C64C23C3456C008111BF /* UnitFormatter.swift in Sources */,
 				8582C60723C213C6008111BF /* NetworkService.swift in Sources */,
