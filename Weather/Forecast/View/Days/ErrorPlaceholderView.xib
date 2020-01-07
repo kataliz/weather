@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ErrorPlaceholderView" customModule="Weather" customModuleProvider="target">
+            <connections>
+                <outlet property="reloadButton" destination="ehL-Hg-3Ku" id="VTO-NN-iq5"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="335" height="529"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ehL-Hg-3Ku">
+                    <rect key="frame" x="57.5" y="247.5" width="220" height="34"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="220" id="SAS-V4-9HG"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                    <state key="normal" title="Oops.. 🤔 something went wrong. Tap to try again">
+                        <color key="titleColor" name="textColor"/>
+                        <color key="titleShadowColor" name="textShadow"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" name="mainBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="ehL-Hg-3Ku" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6hC-34-NTG"/>
+                <constraint firstItem="ehL-Hg-3Ku" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dSO-J1-VMI"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="80.434782608695656" y="272.87946428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="mainBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="textShadow">
+            <color red="0.26899999380111694" green="0.26899999380111694" blue="0.26899999380111694" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

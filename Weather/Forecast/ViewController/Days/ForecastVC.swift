@@ -8,7 +8,6 @@
 
 import UIKit
 import RxSwift
-import RxCocoa
 
 class ForecastVC: UIViewController {
     
@@ -16,6 +15,7 @@ class ForecastVC: UIViewController {
     
     @IBOutlet private var daysWeatherView: DaysWeatherView!
     @IBOutlet private var currentWeatherView: CurrentWeatherView!
+    @IBOutlet private var errorPlaceholder: ErrorPlaceholderView!
     
     // MARK: Dependencies
     
@@ -42,15 +42,16 @@ class ForecastVC: UIViewController {
     }
     
     private func bindViewModel() {
-        let reload = Observable.of(rx.viewWillAppear,refreshControl.rx.delayedTriggered).merge()
+        let errorReload = errorPlaceholder.reloadButton.rx.tap.asObservable()
+        let reload = Observable.of(rx.viewWillAppear,refreshControl.rx.delayedTriggered,errorReload).merge()
         let selected = daysWeatherView.rx.itemSelected.observeOn(MainScheduler.asyncInstance).map { $0.row }
         let output = viewModel.transform(input: Input(reload: reload, selected: selected))
         
         output.days.observeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (days) in
             self?.daysWeatherView.daysInfo = days
         }).disposed(by: dispose)
-        output.error.observeOn(MainScheduler.instance).subscribe(onNext: { (error) in
-            /// In Test work now time for Error Hanlding logic
+        output.isErrorShown.observeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (showError) in
+            self?.errorPlaceholder.isHidden = !showError
         }).disposed(by: dispose)
         output.current.observeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (currentVM) in
             self?.currentWeatherView.configure(viewModel: currentVM)

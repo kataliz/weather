@@ -93,7 +93,7 @@
     <resources>
         <image name="divider" width="320" height="1"/>
         <namedColor name="listAccessoryColor">
-            <color red="0.75074886658031081" green="0.74206590581825005" blue="0.7422619548077245" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.75099998712539673" green="0.74199998378753662" blue="0.74199998378753662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainBackgroundColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -26,6 +26,10 @@
                                     <color key="backgroundColor" name="mainBackgroundColor"/>
                                 </view>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VcU-FS-cXU" customClass="ErrorPlaceholderView" customModule="Weather" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" name="mainBackgroundColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -33,12 +37,17 @@
                             <constraint firstAttribute="trailing" secondItem="1cA-gK-QGw" secondAttribute="trailing" id="81U-PU-tZ5"/>
                             <constraint firstItem="1cA-gK-QGw" firstAttribute="leading" secondItem="6kd-aD-4zw" secondAttribute="leading" id="B8k-DX-ac6"/>
                             <constraint firstAttribute="bottom" secondItem="1cA-gK-QGw" secondAttribute="bottom" id="KNv-u6-jLo"/>
+                            <constraint firstItem="QqD-8K-sLf" firstAttribute="trailing" secondItem="VcU-FS-cXU" secondAttribute="trailing" id="W0s-Vh-BqM"/>
+                            <constraint firstItem="QqD-8K-sLf" firstAttribute="bottom" secondItem="VcU-FS-cXU" secondAttribute="bottom" id="YZp-CV-dQT"/>
+                            <constraint firstItem="VcU-FS-cXU" firstAttribute="top" secondItem="QqD-8K-sLf" secondAttribute="top" id="gou-4p-r9b"/>
+                            <constraint firstItem="VcU-FS-cXU" firstAttribute="leading" secondItem="QqD-8K-sLf" secondAttribute="leading" id="yAh-Va-9nQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QqD-8K-sLf"/>
                     </view>
                     <connections>
                         <outlet property="currentWeatherView" destination="ipu-hC-29k" id="MWD-11-Gry"/>
                         <outlet property="daysWeatherView" destination="1cA-gK-QGw" id="c9p-IY-oU1"/>
+                        <outlet property="errorPlaceholder" destination="VcU-FS-cXU" id="gzt-mo-ea2"/>
                         <segue destination="LGh-gp-FXn" kind="show" identifier="DetailedDayVC" id="L4m-ij-fs9"/>
                     </connections>
                 </viewController>

@@ -30,6 +30,8 @@
 		853C80C423C5009A00B6B922 /* Collection+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C80C323C5009A00B6B922 /* Collection+Helpers.swift */; };
 		853C80C623C508CD00B6B922 /* UIView+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C80C523C508CD00B6B922 /* UIView+Appearance.swift */; };
 		853C80C823C50AEF00B6B922 /* CloseBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C80C723C50AEF00B6B922 /* CloseBarButton.swift */; };
+		853C80CA23C517A400B6B922 /* ErrorPlaceholderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853C80C923C517A400B6B922 /* ErrorPlaceholderView.swift */; };
+		853C80CC23C517B100B6B922 /* ErrorPlaceholderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 853C80CB23C517B100B6B922 /* ErrorPlaceholderView.xib */; };
 		85814C3623BF5FD900F605F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85814C3523BF5FD900F605F7 /* AppDelegate.swift */; };
 		85814C3F23BF5FDA00F605F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 85814C3E23BF5FDA00F605F7 /* Assets.xcassets */; };
 		85814C4D23BF5FDA00F605F7 /* WeatherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85814C4C23BF5FDA00F605F7 /* WeatherTests.swift */; };
@@ -123,6 +125,8 @@
 		853C80C323C5009A00B6B922 /* Collection+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Helpers.swift"; sourceTree = "<group>"; };
 		853C80C523C508CD00B6B922 /* UIView+Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Appearance.swift"; sourceTree = "<group>"; };
 		853C80C723C50AEF00B6B922 /* CloseBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseBarButton.swift; sourceTree = "<group>"; };
+		853C80C923C517A400B6B922 /* ErrorPlaceholderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorPlaceholderView.swift; sourceTree = "<group>"; };
+		853C80CB23C517B100B6B922 /* ErrorPlaceholderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorPlaceholderView.xib; sourceTree = "<group>"; };
 		85814C3223BF5FD900F605F7 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		85814C3523BF5FD900F605F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		85814C3E23BF5FDA00F605F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -443,6 +447,8 @@
 				8582C62823C268C2008111BF /* DaysWeatherView.swift */,
 				8582C62D23C26DA5008111BF /* DayWeatherCell.swift */,
 				8582C62F23C26DB6008111BF /* DayWeatherCell.xib */,
+				853C80C923C517A400B6B922 /* ErrorPlaceholderView.swift */,
+				853C80CB23C517B100B6B922 /* ErrorPlaceholderView.xib */,
 			);
 			path = Days;
 			sourceTree = "<group>";
@@ -675,6 +681,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8582C65523C38C5B008111BF /* DetailedUnitCell.xib in Resources */,
+				853C80CC23C517B100B6B922 /* ErrorPlaceholderView.xib in Resources */,
 				85814C3F23BF5FDA00F605F7 /* Assets.xcassets in Resources */,
 				8503D75E23C49EAD003EBA8C /* CurrentWeatherView.xib in Resources */,
 				8582C63023C26DB6008111BF /* DayWeatherCell.xib in Resources */,
@@ -798,6 +805,7 @@
 				8503D77023C4BC9E003EBA8C /* CacheStorage.swift in Sources */,
 				8503D75623C49489003EBA8C /* RootCoordinator.swift in Sources */,
 				853C80BE23C4EB2600B6B922 /* RefreshControl.swift in Sources */,
+				853C80CA23C517A400B6B922 /* ErrorPlaceholderView.swift in Sources */,
 				8582C64E23C3495F008111BF /* UIStoryboard+Helpers.swift in Sources */,
 				8582C64A23C34557008111BF /* IUnitFormatter.swift in Sources */,
 				8582C62E23C26DA5008111BF /* DayWeatherCell.swift in Sources */,

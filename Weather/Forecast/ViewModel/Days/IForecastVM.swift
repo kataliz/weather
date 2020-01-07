@@ -22,7 +22,7 @@ extension ForecastVC {
     struct Output {
         let isLoading: Observable<Bool>
         let title: Observable<String>
-        let error: Observable<Error>
+        let isErrorShown: Observable<Bool>
         let current: Observable<CurrentWeatherVM>
         let days: Observable<[DayWeatherCellVM]>
         let hold: Observable<Void>

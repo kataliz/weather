@@ -40,14 +40,21 @@ class ForecastVM: IForecastVM {
         let forecast = loadForecast(reload).share(replay: 1)
         let isLoading = loader(reload, forecast: forecast)
         let result = startFromCach(forecast).share(replay: 1)
-        let error = result.map { $0.error }.ignoreNil()
         let forecastValue = result.map { $0.value }.ignoreNil().share(replay: 1)
+        let isErrorShown = showErrorOnce(result: result, forecast: forecastValue, reload: reload)
         let daysValue = days(from: forecastValue)
         let currentValue = current(from: forecastValue)
         let title = Observable.of("\(city)")
         let hold = selected(from: input.selected, forecast: forecastValue)
         
-        return ForecastVC.Output(isLoading: isLoading, title: title, error: error, current: currentValue, days: daysValue, hold: hold)
+        return ForecastVC.Output(isLoading: isLoading, title: title, isErrorShown: isErrorShown, current: currentValue, days: daysValue, hold: hold)
+    }
+    
+    private func showErrorOnce(result: Observable<ApiResult<Forecast>>, forecast: Observable<Forecast>, reload: Observable<Void>) -> Observable<Bool> {
+        let isError = result.map { $0.error != nil }
+        let isReloading = reload.map { _ in return true }
+
+        return Observable.of(isError,isReloading.map { !$0 }).merge().takeUntil(forecast)
     }
     
     private func selected(from selected: Observable<Int>, forecast: Observable<Forecast>) -> Observable<Void> {
