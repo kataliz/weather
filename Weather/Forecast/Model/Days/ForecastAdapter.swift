@@ -8,11 +8,7 @@
 
 import Foundation
 
-protocol IDayWeatherAdapter {
-    func transformDaysInfo(from daysForecast: DaysForecast) -> [DayWeatherInfo]
-}
-
-class DayWeatherAdapter: IDayWeatherAdapter {
+class ForecastAdapter: IForecastAdapter {
     
     // MARK: Dependencies
     
@@ -26,18 +22,24 @@ class DayWeatherAdapter: IDayWeatherAdapter {
         self.unitFormatter = unitFormatter
     }
     
-    // MARK: IDayWeatherAdapter
+    // MARK: IForecastAdapter
     
-    func transformDaysInfo(from daysForecast: DaysForecast) -> [DayWeatherInfo] {
+    func transformDaysCellVM(from daysForecast: DaysForecast) -> [DayWeatherCellVM] {
         dayFormatter.configure(timezone: daysForecast.city.timezone)
         
-        return daysForecast.daysWeather.map { (dayWeather) -> DayWeatherInfo in
+        return daysForecast.daysWeather.map { (dayWeather) -> DayWeatherCellVM in
             let date = dayFormatter.formattedDay(from: dayWeather.date)
             let relative = dayFormatter.relativeDay(from: dayWeather.date)
             let dayTemperature = unitFormatter.temperature(dayWeather.temperature.day)
             let nightTemperature = unitFormatter.temperature(dayWeather.temperature.night)
             
-            return DayWeatherInfo(date: date, dateRelative: relative, weatherIcon: dayWeather.condition.icon, dayTemperature: dayTemperature, nightTemperature: nightTemperature)
+            return DayWeatherCellVM(date: date, dateRelative: relative, weatherIcon: dayWeather.condition.icon, dayTemperature: dayTemperature, nightTemperature: nightTemperature)
         }
+    }
+    
+    func transformCurrentVM(from current: CurrentWeather) -> CurrentWeatherVM {
+        let temperature = unitFormatter.temperature(current.temperature)
+        let feelsLike = "Feels like \(unitFormatter.temperature(current.feelsLike))"
+        return CurrentWeatherVM(temperature: temperature, icon: current.condition.icon, feelsLike: feelsLike)
     }
 }

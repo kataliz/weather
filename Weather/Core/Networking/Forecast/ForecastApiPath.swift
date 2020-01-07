@@ -10,6 +10,7 @@ import Foundation
 
 enum ForecastApiPath: IApiPath {
     case byDays
+    case current
     
     var url: URL {
         guard let result = URL(string: path) else {
@@ -23,8 +24,8 @@ enum ForecastApiPath: IApiPath {
     
     private var path: String {
         switch self {
-        case .byDays:
-            return "http://api.openweathermap.org/data/2.5/forecast/daily"
+        case .byDays: return "https://api.openweathermap.org/data/2.5/forecast/daily"
+        case .current: return "https://api.openweathermap.org/data/2.5/weather"
         }
     }
 }

@@ -15,12 +15,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: Properties
     
-    private lazy var factory: RootFactory = RootFactory()
+    private var coordinator: RootCoordinator?
 
     // MARK: UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        window?.rootViewController = UIStoryboard(name: "Forecast", bundle: nil).viewController(ForecastVC.self)
+        guard let window = window else {
+            return false
+        }
+        
+        UIView.applyDefaultAppearance()
+        
+        coordinator = RootCoordinator(factory: RootFactory(), window: window)
+        coordinator?.start()
+
         return true
     }
 }

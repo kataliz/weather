@@ -1,5 +1,5 @@
 //
-//  DayWeatherInfo.swift
+//  DayWeatherCellVM.swift
 //  Weather
 //
 //  Created by Chimit Zhanchipzhapov on 05/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DayWeatherInfo {
+struct DayWeatherCellVM {
     let date: String
     let dateRelative: String
     let weatherIcon: UIImage

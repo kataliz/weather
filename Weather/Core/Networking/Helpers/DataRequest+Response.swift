@@ -14,7 +14,9 @@ extension Alamofire.DataRequest {
         self.responseData(queue: queue) { response in
             switch response.result {
             case .success(let data):
-                guard let object: T = try? JSONDecoder().decode(T.self, from: data) else {
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .secondsSince1970
+                guard let object: T = try? decoder.decode(T.self, from: data) else {
                     completion(.failure(NetworkError.parsingFailed))
                     return
                 }

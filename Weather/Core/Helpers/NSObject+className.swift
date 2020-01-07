@@ -13,3 +13,5 @@ extension NSObject {
         return String(describing: self)
     }
 }
+
+typealias EmptyCallback = () -> Void

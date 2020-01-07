@@ -20,11 +20,11 @@ class DayWeatherCell: UITableViewCell {
     
     // MARK: Configure
     
-    public func configure(dayWeatherInfo: DayWeatherInfo) {
-        date.text = dayWeatherInfo.date
-        dateRelative.text = dayWeatherInfo.dateRelative
-        weatherIcon.image = dayWeatherInfo.weatherIcon
-        dayTemperature.text = dayWeatherInfo.dayTemperature
-        nightTemperature.text = dayWeatherInfo.nightTemperature
+    public func configure(viewModel: DayWeatherCellVM) {
+        date.text = viewModel.date
+        dateRelative.text = viewModel.dateRelative
+        weatherIcon.image = viewModel.weatherIcon
+        dayTemperature.text = viewModel.dayTemperature
+        nightTemperature.text = viewModel.nightTemperature
     }
 }

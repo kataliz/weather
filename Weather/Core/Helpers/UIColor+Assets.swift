@@ -24,4 +24,12 @@ extension UIColor {
     static var titleColor: UIColor {
         return UIColor(named: "titleColor")!
     }
+    
+    static var hotColor: UIColor {
+        return UIColor(named: "hotColor")!
+    }
+    
+    static var coldColor: UIColor {
+        return UIColor(named: "coldColor")!
+    }
 }

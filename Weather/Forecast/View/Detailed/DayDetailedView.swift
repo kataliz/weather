@@ -1,18 +1,18 @@
 //
-//  DaysWeatherView.swift
+//  DayDetailedView.swift
 //  Weather
 //
-//  Created by Chimit Zhanchipzhapov on 05/01/2020.
+//  Created by Chimit Zhanchipzhapov on 06/01/2020.
 //  Copyright © 2020 Chimit Zhanchipzhapov. All rights reserved.
 //
 
 import UIKit
 
-class DaysWeatherView: UITableView, UITableViewDelegate, UITableViewDataSource {
-    
+class DayDetailedView: LazyRegisterTableView, UITableViewDataSource, UITableViewDelegate {
+
     // MARK: Public
     
-    public var daysInfo = [DayWeatherInfo]() {
+    public var detailedList = [DayDetailedCellVM]() {
         didSet {
             reloadData()
         }
@@ -35,23 +35,24 @@ class DaysWeatherView: UITableView, UITableViewDelegate, UITableViewDataSource {
     private func configure() {
         showsVerticalScrollIndicator = false
         separatorStyle = .none
-        allowsMultipleSelection = false
         delegate = self
         dataSource = self
         backgroundColor = .mainBackgroundColor
-        rowHeight = 79.0
-        register(cell: DayWeatherCell.self)
+        rowHeight = UITableView.automaticDimension
     }
     
     // MARK: UITableViewDelegate & UITableViewDataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return daysInfo.count
+        return detailedList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = dequeueCell(DayWeatherCell.self, for: indexPath)
-        cell.configure(dayWeatherInfo: daysInfo[indexPath.row])
+        let viewModel = detailedList[indexPath.row]
+        let cell = dequeueCell(viewModel.cell, for: indexPath)
+        cell.configure(viewModel: viewModel)
+        
         return cell
     }
 }
+
