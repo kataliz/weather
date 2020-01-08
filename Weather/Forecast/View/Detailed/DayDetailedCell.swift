@@ -9,5 +9,5 @@
 import UIKit
 
 class DayDetailedCell: UITableViewCell {
-    open func configure(viewModel: DayDetailedCellVM) { }
+    open func configure(viewModel: DayDetailedCellInfo) { }
 }

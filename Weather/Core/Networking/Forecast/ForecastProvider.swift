@@ -38,12 +38,12 @@ class ForecastProvider: IForecastProvider {
        }
    }
     
-    func currentWeather(for city: String) -> Observable<ApiResult<CurrentWeather>> {
+    private func currentWeather(for city: String) -> Observable<ApiResult<CurrentWeather>> {
         let parameters = defaultParameters(for: city)
         return network.request(info: ResourceInfo(path: ForecastApiPath.current, parameters: parameters))
     }
     
-    func daysForecast(for city: String) -> Observable<ApiResult<DaysForecast>> {
+    private func daysForecast(for city: String) -> Observable<ApiResult<DaysForecast>> {
         var parameters = defaultParameters(for: city)
         parameters["cnt"] = 16
         return network.request(info: ResourceInfo(path: ForecastApiPath.byDays, parameters: parameters))

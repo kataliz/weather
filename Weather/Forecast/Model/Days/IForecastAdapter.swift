@@ -9,6 +9,5 @@
 import Foundation
 
 protocol IForecastAdapter: class {
-    func transformDaysCellVM(from daysForecast: DaysForecast) -> [DayWeatherCellVM]
-    func transformCurrentVM(from current: CurrentWeather) -> CurrentWeatherVM
+    func transformDaysWeather(from forecast: Forecast) -> ForecastInfo
 }

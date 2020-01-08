@@ -18,8 +18,8 @@ class DetailedUnitCell: DayDetailedCell {
     
     // MARK: Configure
     
-    override func configure(viewModel: DayDetailedCellVM) {
-        guard let viewModel = viewModel as? DetailedUnitCellVM else {
+    override func configure(viewModel: DayDetailedCellInfo) {
+        guard let viewModel = viewModel as? DetailedUnitCellInfo else {
             return
         }
         

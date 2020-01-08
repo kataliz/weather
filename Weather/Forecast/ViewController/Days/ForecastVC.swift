@@ -23,7 +23,7 @@ class ForecastVC: UIViewController {
     
     // MARK: Properties
     
-    private var refreshControl = RefreshControl()
+    private lazy var refreshControl = RefreshControl()
     private var dispose = DisposeBag()
     
     // MARK: Lifecycle
@@ -47,15 +47,12 @@ class ForecastVC: UIViewController {
         let selected = daysWeatherView.rx.itemSelected.observeOn(MainScheduler.asyncInstance).map { $0.row }
         let output = viewModel.transform(input: Input(reload: reload, selected: selected))
         
-        output.days.observeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (days) in
-            self?.daysWeatherView.daysInfo = days
+        output.forecast.observeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (viewModel) in
+            self?.currentWeatherView.viewModel = viewModel.current
+            self?.daysWeatherView.daysInfo = viewModel.days
         }).disposed(by: dispose)
-        output.isErrorShown.observeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (showError) in
-            self?.errorPlaceholder.isHidden = !showError
-        }).disposed(by: dispose)
-        output.current.observeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (currentVM) in
-            self?.currentWeatherView.configure(viewModel: currentVM)
-        }).disposed(by: dispose)
+        
+        output.isErrorHidden.observeOn(MainScheduler.instance).bind(to: errorPlaceholder.rx.isHidden).disposed(by: dispose)
         output.isLoading.observeOn(MainScheduler.instance).bind(to: refreshControl.rx.isRefreshing).disposed(by: dispose)
         output.title.observeOn(MainScheduler.instance).bind(to: rx.title).disposed(by: dispose)
         output.hold.subscribe().disposed(by: dispose)

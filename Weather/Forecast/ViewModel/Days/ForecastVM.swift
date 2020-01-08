@@ -18,6 +18,7 @@ class ForecastVM: IForecastVM {
     private var storage: ICacheStorage
     private let adapter: IForecastAdapter
     private let provider: IForecastProvider
+    private let scheduler: SchedulerType
     
     // MARK: Properties
     
@@ -26,35 +27,32 @@ class ForecastVM: IForecastVM {
     
     // MARK: Lifecycle
     
-    init(adapter: IForecastAdapter, provider: IForecastProvider, storage: ICacheStorage, onSelect: @escaping OnDaySelected) {
+    init(adapter: IForecastAdapter, provider: IForecastProvider, storage: ICacheStorage, scheduler: SchedulerType = MainScheduler.instance, onSelect: @escaping OnDaySelected) {
         self.adapter = adapter
         self.provider = provider
         self.storage = storage
         self.onSelect = onSelect
+        self.scheduler = scheduler
     }
     
     // MARK: IForecastVM
     
     func transform(input: ForecastVC.Input) -> ForecastVC.Output {
-        let reload = input.reload.share(replay: 1)
-        let forecast = loadForecast(reload).share(replay: 1)
-        let isLoading = loader(reload, forecast: forecast)
-        let result = startFromCach(forecast).share(replay: 1)
-        let forecastValue = result.map { $0.value }.ignoreNil().share(replay: 1)
-        let isErrorShown = showErrorOnce(result: result, forecast: forecastValue, reload: reload)
-        let daysValue = days(from: forecastValue)
-        let currentValue = current(from: forecastValue)
-        let title = Observable.of("\(city)")
-        let hold = selected(from: input.selected, forecast: forecastValue)
+        let reload = input.reload.debounce(.seconds(1), scheduler: scheduler).share(replay: 1).startWith(())
+        let load = loadForecast(reload).share(replay: 1)
+        let result = startFromCache(load).share(replay: 1)
+        let forecast = result.map { $0.value }.ignoreNil().share(replay: 1)
+        let isErrorHidden = showErrorOnce(result: result, loaded: forecast.toVoid(), reload: reload)
+        let hold = selected(from: input.selected, forecast: forecast)
         
-        return ForecastVC.Output(isLoading: isLoading, title: title, isErrorShown: isErrorShown, current: currentValue, days: daysValue, hold: hold)
+        return ForecastVC.Output(isLoading: loader(reload, forecast: load), title: Observable.of("\(city)"), isErrorHidden: isErrorHidden, forecast: adapted(forecast), hold: hold)
     }
     
-    private func showErrorOnce(result: Observable<ApiResult<Forecast>>, forecast: Observable<Forecast>, reload: Observable<Void>) -> Observable<Bool> {
-        let isError = result.map { $0.error != nil }
+    private func showErrorOnce(result: Observable<ApiResult<Forecast>>, loaded: Observable<Void>, reload: Observable<Void>) -> Observable<Bool> {
+        let isWasValue = result.map { $0.error == nil }
         let isReloading = reload.map { _ in return true }
 
-        return Observable.of(isError,isReloading.map { !$0 }).merge().takeUntil(forecast)
+        return Observable.of(isWasValue,isReloading).merge().takeUntil(loaded).distinctUntilChanged()
     }
     
     private func selected(from selected: Observable<Int>, forecast: Observable<Forecast>) -> Observable<Void> {
@@ -67,15 +65,9 @@ class ForecastVM: IForecastVM {
         }.ignoreNil().do(onNext: onSelect).toNever()
     }
     
-    private func days(from forecast: Observable<Forecast>) -> Observable<[DayWeatherCellVM]> {
-        return Observable.combineLatest(Observable.of(adapter), forecast).map { (adapter,forecast) -> [DayWeatherCellVM] in
-            return adapter.transformDaysCellVM(from: forecast.days)
-        }
-    }
-    
-    private func current(from forecast: Observable<Forecast>) -> Observable<CurrentWeatherVM> {
-        return Observable.combineLatest(Observable.of(adapter), forecast).map { (adapter,forecast) -> CurrentWeatherVM in
-            return adapter.transformCurrentVM(from: forecast.current)
+    private func adapted(_ forecast: Observable<Forecast>) -> Observable<ForecastInfo> {
+        return Observable.combineLatest(Observable.of(adapter), forecast).map { (adapter,forecast) -> ForecastInfo in
+            return adapter.transformDaysWeather(from: forecast)
         }
     }
     
@@ -83,7 +75,7 @@ class ForecastVM: IForecastVM {
         return Observable.of(load.map { true },forecast.map { _ in return false }).merge()
     }
     
-    private func startFromCach(_ forecast: Observable<ApiResult<Forecast>>) -> Observable<ApiResult<Forecast>> {
+    private func startFromCache(_ forecast: Observable<ApiResult<Forecast>>) -> Observable<ApiResult<Forecast>> {
         guard let cached = storage.forecast(for: city) else {
             return forecast
         }
@@ -92,8 +84,8 @@ class ForecastVM: IForecastVM {
     }
     
     private func loadForecast(_ load: Observable<Void>) -> Observable<ApiResult<Forecast>> {
-        return load.flatMap(weak: self) { (tSelft,_) -> Observable<ApiResult<Forecast>> in
-            return tSelft.provider.forecast(for: tSelft.city).do(onNext: {[weak self] (results) in
+        return load.flatMapFirst(weak: self) { (tSelf,_) -> Observable<ApiResult<Forecast>> in
+            return tSelf.provider.forecast(for: tSelf.city).do(onNext: {[weak self] (results) in
                 guard let `self` = self, let forecast = results.value else {
                     return
                 }

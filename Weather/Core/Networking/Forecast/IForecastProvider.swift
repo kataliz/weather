@@ -10,7 +10,5 @@ import Foundation
 import RxSwift
 
 protocol IForecastProvider {
-    func currentWeather(for city: String) -> Observable<ApiResult<CurrentWeather>>
-    func daysForecast(for city: String) -> Observable<ApiResult<DaysForecast>>
     func forecast(for city: String) -> Observable<ApiResult<Forecast>>
 }

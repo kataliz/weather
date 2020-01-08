@@ -20,7 +20,7 @@ extension DetailedDayVC {
     
     struct Output {
         let title: Observable<String>
-        let dayDetailed: Observable<[DayDetailedCellVM]>
+        let dayDetailed: Observable<[DayDetailedCellInfo]>
         let hold: Observable<Void>
     }
 }

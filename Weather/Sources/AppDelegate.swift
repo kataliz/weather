@@ -8,7 +8,6 @@
 
 import UIKit
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
@@ -20,14 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: UIApplicationDelegate
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        guard let window = window else {
-            return false
-        }
-        
+        let window = UIWindow()
         UIView.applyDefaultAppearance()
         
         coordinator = RootCoordinator(factory: RootFactory(), window: window)
         coordinator?.start()
+        
+        self.window = window
+        self.window?.makeKeyAndVisible()
 
         return true
     }

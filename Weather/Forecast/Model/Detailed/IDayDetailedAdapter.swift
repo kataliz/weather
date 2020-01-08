@@ -9,6 +9,6 @@
 import Foundation
 
 protocol IDayDetailedAdapter {
-    func transform(dayInfo: DayWeather, for city: ForecastCity) -> [DayDetailedCellVM]
+    func transform(dayInfo: DayWeather, for city: ForecastCity) -> [DayDetailedCellInfo]
     func dayName(dayInfo: DayWeather, for city: ForecastCity) -> String
 }

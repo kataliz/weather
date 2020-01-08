@@ -1,5 +1,5 @@
 //
-//  DayDetailedCellVM.swift
+//  DayDetailedCellInfo.swift
 //  Weather
 //
 //  Created by Chimit Zhanchipzhapov on 06/01/2020.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-protocol DayDetailedCellVM {
+protocol DayDetailedCellInfo {
     var cell: DayDetailedCell.Type { get }
 }

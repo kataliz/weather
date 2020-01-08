@@ -1,5 +1,5 @@
 //
-//  DetailedUnitCellVM.swift
+//  DetailedUnitCellInfo.swift
 //  Weather
 //
 //  Created by Chimit Zhanchipzhapov on 06/01/2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DetailedUnitCellVM: DayDetailedCellVM {
+struct DetailedUnitCellInfo: DayDetailedCellInfo {
     let cell: DayDetailedCell.Type = DetailedUnitCell.self
     let icon: UIImage
     let name: String

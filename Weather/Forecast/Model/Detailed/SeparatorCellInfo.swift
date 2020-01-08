@@ -8,6 +8,6 @@
 
 import Foundation
 
-struct SeparatorCellVM: DayDetailedCellVM {
+struct SeparatorCellInfo: DayDetailedCellInfo {
     let cell: DayDetailedCell.Type = SeparatorCell.self
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DetailedTemperatureCellVM: DayDetailedCellVM {
+struct DetailedTemperatureCellInfo: DayDetailedCellInfo {
     let cell: DayDetailedCell.Type = DetailedTemperatureCell.self
     let name: String
     let icon: UIImage

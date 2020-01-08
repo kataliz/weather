@@ -26,8 +26,8 @@ class DetailedTemperatureCell: DayDetailedCell {
     
     // MARK: Configure
     
-    override func configure(viewModel: DayDetailedCellVM) {
-        guard let viewModel = viewModel as? DetailedTemperatureCellVM else {
+    override func configure(viewModel: DayDetailedCellInfo) {
+        guard let viewModel = viewModel as? DetailedTemperatureCellInfo else {
             return
         }
         

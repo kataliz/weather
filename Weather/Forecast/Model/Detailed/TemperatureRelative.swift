@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TemperatureRelative {
+enum TemperatureRelative: String, Equatable {
     case cold
     case hot
     case normal

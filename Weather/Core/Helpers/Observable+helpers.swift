@@ -36,6 +36,12 @@ extension Observable {
     func toNever() -> Observable<Void> {
         return flatMap { _ -> Observable<Void> in return .never() }
     }
+    
+    func toVoid() -> Observable<Void> {
+        return map { _ -> Void in
+            return ()
+        }
+    }
 }
 
 extension ObservableType {
@@ -81,3 +87,12 @@ extension Reactive where Base: UIRefreshControl {
         return controlEvent(.valueChanged).asObservable().delay(DispatchTimeInterval.milliseconds(500), scheduler: MainScheduler.instance)
     }
 }
+
+extension Reactive where Base: DayDetailedView {
+    var detailedList: Binder<[DayDetailedCellInfo]> {
+        return Binder(self.base, scheduler: MainScheduler.instance) { (target, value) in
+            target.detailedList = value
+        }
+    }
+}
+

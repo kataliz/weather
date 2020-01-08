@@ -21,6 +21,25 @@ struct DayWeather: Codable {
     var windDegree: Float
     var rainVolume: Float?
     var snowVolume: Float?
+    
+    // MARK: Lifecycle
+    
+    init(date: Date, sunrise: Date, sunset: Date, temperature: DayTemperature, feelsLike: DayTemperature,
+         pressure: Float, humidity: Float, condition: WeatherCondition,
+         windSpeed: Float, windDegree: Float, rainVolume: Float?, snowVolume: Float?) {
+        self.date = date
+        self.sunrise = sunrise
+        self.sunset = sunset
+        self.temperature = temperature
+        self.feelsLike = feelsLike
+        self.pressure = pressure
+        self.humidity = humidity
+        self.condition = condition
+        self.windSpeed = windSpeed
+        self.windDegree = windDegree
+        self.rainVolume = rainVolume
+        self.snowVolume = snowVolume
+    }
 
     // MARK: Codable
     

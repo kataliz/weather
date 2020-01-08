@@ -12,7 +12,7 @@ class DaysWeatherView: UITableView, UITableViewDelegate, UITableViewDataSource {
     
     // MARK: Public
     
-    public var daysInfo = [DayWeatherCellVM]() {
+    public var daysInfo = [DayWeatherInfo]() {
         didSet {
             reloadData()
         }

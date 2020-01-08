@@ -12,7 +12,7 @@ class DayDetailedView: LazyRegisterTableView, UITableViewDataSource, UITableView
 
     // MARK: Public
     
-    public var detailedList = [DayDetailedCellVM]() {
+    public var detailedList = [DayDetailedCellInfo]() {
         didSet {
             reloadData()
         }

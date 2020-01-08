@@ -20,7 +20,7 @@ class DayWeatherCell: UITableViewCell {
     
     // MARK: Configure
     
-    public func configure(viewModel: DayWeatherCellVM) {
+    public func configure(viewModel: DayWeatherInfo) {
         date.text = viewModel.date
         dateRelative.text = viewModel.dateRelative
         weatherIcon.image = viewModel.weatherIcon

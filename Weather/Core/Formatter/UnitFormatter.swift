@@ -20,17 +20,17 @@ class UnitFormatter: IUnitFormatter {
     */
     func temperature(_ value: Float) -> String {
         let rounded = Int(roundf(value))
-        let prefix = rounded > 0 ? "+" : rounded < 0 ? "-" : ""
+        let prefix = rounded > 0 ? "+" : ""
         return "\(prefix)\(rounded)°"
     }
     
     /**
     Formatting volume in mm
 
-    - Parameter value: Volume in mm
+    - Parameter value: Volume in mm, greather or equal 0.0
     */
     func volume(_ value: Float) -> String {
-        return "\(Int(roundf(value))) mm"
+        return "\(Int(roundf(max(0.0,value)))) mm"
     }
     
     /**
@@ -39,11 +39,11 @@ class UnitFormatter: IUnitFormatter {
     - Parameter value: Pressure value in hPa
     */
     func pressure(_ value: Float) -> String {
-        return "\(Int(roundf(value/1.3332239))) mmHg"
+        return "\(Int(roundf(max(0.0,value)/1.3332239))) mmHg"
     }
     
     func humidity(_ value: Float) -> String {
-        return "\(Int(roundf(value))) %"
+        return "\(Int(roundf(max(0.0,value)))) %"
     }
     
     /**
@@ -54,7 +54,11 @@ class UnitFormatter: IUnitFormatter {
         - degrees: Wind degrees between 0.0 and 360.0
     */
     func wind(_ value: Float, degrees: Float) -> String {
-        return "\(Int(roundf(value))) m/s, \(direction(from: degrees))"
+        let windSpeed = Int(roundf(max(0.0,value)))
+        guard windSpeed > 0 else {
+            return "Calm"
+        }
+        return "\(windSpeed) m/s, \(direction(from: degrees))"
     }
     
     private func direction(from degrees: Float) -> String {

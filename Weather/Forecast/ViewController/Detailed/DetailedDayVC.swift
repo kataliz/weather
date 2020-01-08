@@ -21,7 +21,7 @@ class DetailedDayVC: UIViewController {
     
     // MARK: Properties
     
-    private var closeButton = CloseBarButton(style: .plain)
+    private lazy var closeButton = CloseBarButton(style: .plain)
     private var dispose = DisposeBag()
     
     // MARK: Lifecycle
@@ -42,9 +42,8 @@ class DetailedDayVC: UIViewController {
     private func bindViewModel() {
         let onClose = closeButton.rx.tap.asObservable()
         let output = viewModel.transform(input: Input(tapOnClose: onClose))
-        output.dayDetailed.observeOn(MainScheduler.instance).subscribe(onNext: {[weak self] (cellModels) in
-            self?.detailedView.detailedList = cellModels
-        }).disposed(by: dispose)
+        
+        output.dayDetailed.bind(to: detailedView.rx.detailedList).disposed(by: dispose)
         output.title.bind(to: rx.title).disposed(by: dispose)
         output.hold.subscribe().disposed(by: dispose)
     }

@@ -18,7 +18,7 @@ class RootFactory: IRootFactory, IForecastFactory {
     private lazy var network: INetworkService = NetworkService(sessionManager: SessionManager.default, queue: queue)
     private lazy var rxNetwork: IRxNetworkService = RxNetworkService(network: network)
     private lazy var unitFormatter: IUnitFormatter = UnitFormatter()
-    private lazy var dayFormatter: IDayLocalFormatter = DayLocalFormatter()
+    private lazy var dayFormatter: IDayLocalFormatter = DayLocalFormatter(locale: Locale(identifier: "en"), calendar: Calendar.current)
     
     // MARK: IRootFactory
     

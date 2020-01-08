@@ -12,15 +12,16 @@ class DayLocalFormatter: IDayLocalFormatter {
     
     // MARK: Properties
     
-    private var formatter = DateFormatter()
-    private var calendar = Calendar.current
+    private let formatter = DateFormatter()
+    private var calendar: Calendar
     
     // MARK: Lifecycle
     
-    init() {
-        //TODO: For Test Work only en localization
-        formatter.locale = Locale(identifier: "en")
-        calendar.locale = Locale(identifier: "en")
+    init(locale: Locale, calendar: Calendar) {
+        self.calendar = calendar
+        self.calendar.locale = locale
+        formatter.locale = locale
+        formatter.calendar = calendar
     }
     
     // MARK: IDayFormatter

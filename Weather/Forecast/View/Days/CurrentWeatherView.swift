@@ -17,6 +17,14 @@ class CurrentWeatherView: UIView, ViewFromXib {
     @IBOutlet private var feelsLike: UILabel!
     @IBOutlet private var icon: UIImageView!
     
+    // MARK: Public
+    
+    public var viewModel: CurrentWeatherInfo? {
+        didSet {
+            configure(viewModel: viewModel)
+        }
+    }
+    
     // MARK: Lifecycle
     
     override init(frame: CGRect) {
@@ -37,7 +45,11 @@ class CurrentWeatherView: UIView, ViewFromXib {
         isHidden = true
     }
     
-    public func configure(viewModel: CurrentWeatherVM) {
+    private func configure(viewModel: CurrentWeatherInfo?) {
+        guard let viewModel = viewModel else {
+            isHidden = true
+            return
+        }
         temperature.text = viewModel.temperature
         icon.image = viewModel.icon
         feelsLike.text = viewModel.feelsLike

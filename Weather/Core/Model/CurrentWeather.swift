@@ -13,6 +13,14 @@ struct CurrentWeather: Codable {
     let feelsLike: Float
     let condition: WeatherCondition
     
+    // MARK: Lifecycle
+    
+    init(temperature: Float, feelsLike: Float, condition: WeatherCondition) {
+        self.temperature = temperature
+        self.feelsLike = feelsLike
+        self.condition = condition
+    }
+    
     // MARK: Codable
     
     enum CodingKeys: String, CodingKey {
