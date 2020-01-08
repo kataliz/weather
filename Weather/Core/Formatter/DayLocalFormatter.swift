@@ -51,7 +51,7 @@ class DayLocalFormatter: IDayLocalFormatter {
     }
     
     func formattedTime(from date: Date) -> String {
-        formatter.dateFormat = "hh:mm"
+        formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
     }
 }
